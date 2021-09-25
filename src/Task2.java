@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 public class Task2 {
     public static void main(String[] args) {
@@ -53,10 +53,23 @@ public class Task2 {
         }
         return average / array.length;
     }
-
+    static void swap(int[] array, int first, int second) {
+        int n = array[first];
+        array[first] = array[second];
+        array[second] = n;
+    }
     static int medium(int[] array) {
+        boolean iteration = true;
+        while (iteration) {
+            iteration = false;
+            for(int i = 1; i < array.length; i++) {
+                if(array[i] < array[i-1]) {
+                    swap(array, i, i-1);
+                    iteration = true;
+                }
+            }
+        }
         int mid;
-        Arrays.sort(array);
         mid = array[(array.length / 2)];
         return mid;
     }
